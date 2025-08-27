@@ -142,4 +142,4 @@ The app will now be running at [http://localhost:5173/](http://localhost:5173/).
 
 ## Credits
 
-Made with ❤️ by [maciekt07](https://github.com/maciekt07), licensed under [MIT](https://github.com/maciekt07/TodoApp/blob/main/LICENSE).
+Made with ❤️ by [priyansh06rawat](https://github.com/priyansh06rawat), licensed under [MIT](https://github.com/maciekt07/TodoApp/blob/main/LICENSE).
