@@ -63,28 +63,7 @@ export const ProfileSidebar = () => {
   const theme = useTheme();
   const n = useNavigate();
 
-  useEffect(() => {
-    const fetchRepoInfo: () => Promise<void> = async () => {
-      const { repoData, branchData } = await fetchGitHubInfo();
-      setStars(repoData.stargazers_count);
-      setLastUpdate(branchData.commit.commit.committer.date);
-      setIssuesCount(repoData.open_issues_count);
-    };
-
-    const fetchBMC: () => Promise<void> = async () => {
-      // Fetch data from the Buy Me a Coffee API
-      const { supportersCount } = await fetchBMCInfo();
-      // In case BMC api fails
-      if (supportersCount > 0) {
-        setBmcSupporters(supportersCount);
-      } else {
-        console.error("No BMC supporters found.");
-      }
-    };
-
-    fetchBMC();
-    fetchRepoInfo();
-  }, []);
+  
 
   const [avatarSrc, setAvatarSrc] = useState<string | null>(null);
 
@@ -330,22 +309,6 @@ export const ProfileSidebar = () => {
           </StyledMenuItem>
         </MenuLink>
 
-        <MenuLink to="https://www.buymeacoffee.com/maciekt07">
-          <StyledMenuItem className="bmcMenu">
-            <BmcIcon className="bmc-icon" src={theme.darkmode ? bmcLogoLight : bmcLogo} /> &nbsp;
-            Buy me a coffee{" "}
-            {bmcSupporters && (
-              <Tooltip title={`${bmcSupporters} supporters on Buy me a coffee`}>
-                <MenuLabel clr="#f93c58">
-                  <span style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <FavoriteRounded style={{ fontSize: "16px" }} />
-                    &nbsp;{bmcSupporters}
-                  </span>
-                </MenuLabel>
-              </Tooltip>
-            )}
-          </StyledMenuItem>
-        </MenuLink>
 
         <StyledDivider />
 
